@@ -1,0 +1,29 @@
+{
+  "name": "masterreact",
+  "version": "1.0.0",
+  "description": "This is a series to Revise React ",
+  "homepage": "https://github.com/Deeks900/ReactMastery#readme",
+  "bugs": {
+    "url": "https://github.com/Deeks900/ReactMastery/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deeks900/ReactMastery.git"
+  },
+  "license": "ISC",
+  "author": "Deeksha Sharma",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "browserslist":[
+    "last 2 chrome versions"
+  ]
+}

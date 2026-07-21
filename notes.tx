@@ -1,0 +1,32 @@
+Package.json is the configuration for npm
+npm is a package manager but don't have a full form
+Bundler like webpack bundles your code so that it can be pushed to production
+^ minor upgrade will be installae automatically
+~ major version upgrade will be installed automatically
+package-lock.json keep an exact track of version of packages
+node modules contains all the code npm fetches for a package while installing
+Transitive Dependencies are there in node modules 
+There are dev depnecies installed with npm install -D parcel
+There are also production dependencies 
+Transitive depnedencies -> Like all dependencies have their own package.json having their own dependecies 
+npm init creates the package.json
+npx parcel index.html -> Igniting the App
+npm install installs the package
+npx executes the package
+React is a Javascript code hosted on npm
+CDN links is not a preferred way to bring React 
+npm install React
+Parcle creates Dev buils, starts local server and also and Hot Module Replacement i.e anything chnaged page refreshes by itself
+Parcel uses a file watching algorithm for HMR written in C++.
+Parcel gives faster builds because of Caching in folder parcel-cache
+parcel do image optimization also as most expensive thing is to load images 
+Parcel compress, minify, bundle, consistent hashing, code splitting, good error handling, differential bundling
+Parcel does Tree Shaking also that is remove Unused code
+Parcel has a dev and prod build separatley
+For production build npx parcel build index.html
+For dev build : npx parcel index.html
+browserslist -> compatible with browsers
+
+
+
+
