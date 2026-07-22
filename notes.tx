@@ -26,6 +26,22 @@ Parcel has a dev and prod build separatley
 For production build npx parcel build index.html
 For dev build : npx parcel index.html
 browserslist -> compatible with browsers
+npm run start or npm start same thing
+in package.json check for start script to see the command to run the project 
+npx is not needed because npm puts the node modules path at 0th position
+React.create element just create objects which then ReactDom.render renders as html
+JSX is just a javascript syntax 
+JSX is not the html written inside Javascript but JSX is a html like syntax
+JSX is not a valid Javascript as browser, js engines can't read this code 
+JSX code is transpiled by Parcel(using Babel) before it reaches js engines
+Babel is a Javascript Compiler -> Job to convert JSX to JS code
+JSX --> Converted to React.createElement --> Then rendered as HTML
+Parcel is like the manager of Babel.
+html use class and jsx className
+Attributes to JSX are given in camelCase
+Wrap JSX in () if you are writing in multiple lines
+
+
 
 
 
