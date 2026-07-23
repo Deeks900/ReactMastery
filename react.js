@@ -36,5 +36,24 @@ const headDiv = React.createElement('div', {id:'headDiv'},
     ]
 )
 
+const TitleComponent = () => {
+    return <h1>I am speaking from TitleComponent</h1>
+}
+
+const reactElement = (
+    <h1>I am the react Element</h1>
+)
+
+const HeadingComponent = () => (
+    <div className="headingComponent">
+        {/* <TitleComponent /> */}
+        {TitleComponent()}
+        {/* React element is also a JavaScript object */}
+        {reactElement}
+    <h1>I am speaking from headingComponent and see I know maths {100+100} </h1>
+    </div>
+)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(headDiv);
+// root.render(headDiv);
+root.render(< HeadingComponent/>);

@@ -41,6 +41,24 @@ html use class and jsx className
 Attributes to JSX are given in camelCase
 Wrap JSX in () if you are writing in multiple lines
 
+React components two ways to write : 
+Class Based components - OLD way 
+Function Based components - NEW -> A Javascript function that returns some piece of JSX => Name Capital letter 
+
+A functional Component rendered like root.render(< HeadingComponent />)
+Rendering Component inside Component is called Component Composition.
+JSX is a mix of HTML and Javascript.
+You can write js in {} in JSX 
+You can put ReactElement in ReactComponent or vice-versa or can do any sort of mix and match 
+JSX takes care of injection attacks 
+JSX stops cross-scripting attacks as it sanitizes the data whatever you write in {} in code 
+You can call a Function also in JSX so basically React Components are also JS Functions and they can be called inside like functions inside JSX
+
+
+
+
+
+
 
 
 
