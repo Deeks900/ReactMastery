@@ -53,7 +53,12 @@ You can put ReactElement in ReactComponent or vice-versa or can do any sort of m
 JSX takes care of injection attacks 
 JSX stops cross-scripting attacks as it sanitizes the data whatever you write in {} in code 
 You can call a Function also in JSX so basically React Components are also JS Functions and they can be called inside like functions inside JSX
+In jsx we write inline css like :
+const styleCard = {
+    backgroundColor : "red"
+}
 
+<h1 style={styleCard}> So style has to be given like JS object
 
 
 
