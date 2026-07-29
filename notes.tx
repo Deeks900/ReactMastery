@@ -60,8 +60,16 @@ const styleCard = {
 
 <h1 style={styleCard}> So style has to be given like JS object
 
+React has props means properties
+Since React components are functions so props are just arguments passing to a function.
 
+<ResCard cuisine="north india" res="chulbul dhaba" />
+props will be passed as objects
+const ResCard = (props)=>{}
+or destructuring on the fly
+const ResCard = ({cuisine, res}) => {}
 
+Config Driven UI : 
 
 
 
