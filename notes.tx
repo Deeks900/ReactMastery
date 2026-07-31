@@ -69,7 +69,13 @@ const ResCard = (props)=>{}
 or destructuring on the fly
 const ResCard = ({cuisine, res}) => {}
 
-Config Driven UI : 
+Config Driven UI :
+
+resList.map((restraunt)=> <Restraunt key={id}/>) //Iterating over the array 
+while using map always make sure to pass the unique key. Otherwise everything will be re rendered
+React itself says that never use index as keys
+
+
 
 
 
