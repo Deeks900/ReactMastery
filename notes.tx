@@ -75,6 +75,46 @@ resList.map((restraunt)=> <Restraunt key={id}/>) //Iterating over the array
 while using map always make sure to pass the unique key. Otherwise everything will be re rendered
 React itself says that never use index as keys
 
+You can name a file as Header.js or Header.jsx same thing
+for export - export default componentName
+import - import Header from './components/Header
+
+export default only one thing can be exported from a file but when multiple things needs to be exported from the same file you have to use named export : 
+export const CDN_URL = "https://abc.com"
+For doing named imports use curly braces : import {CDN_URL} from '.././components
+React Hooks are the morkak Javascript functionS.
+Fcebook employees have written these
+There are many react hooks but mostly used out of the are : 
+useSate(()=>{})
+useEffect(()=>{})
+
+import {useState} from "react"
+
+usestate is used to create a state variable
+State variable the maintains the state of the component
+import { useState } from "react"
+const [variablename] = useState([])
+variable created using setState cannot be modified like other variables.It is done like:
+const [variableName, setVariableName] = useState([]);
+setVariableName(filteredList)
+Whenever a state variable changes -> React will rerender the component
+React is so good at DOM Manipulations
+React keep Data layer in sync with UI layer 
+so like as just you change restrauntList variable UI will be rerendered to show the updated list on UI 
+React uses Reconciliation Algorithm (React Fibre): 
+Virtual DOM is not an Actual DOM.It it like an object containing React Elements 
+Diff Algorith compares the old virtual DOM and latest virtual DOM 
+and then updates the Actual DOM 
+In react 16 a new algo to called React Fibre for DOM Update
+Virtual DOM is an object representation of DOM
+Whenever a state change is there then react compares the virtual DOM and re renders the UI
+React is doinf effecient DOM Maniplation because it has virtual DOM hence it is faster
+Virtual DOM is the object representation of HTML
+//Array destructuring
+const ans = useState(resList);
+const [res, setRes] = ans 
+
+
 
 
 
