@@ -74,6 +74,7 @@ Config Driven UI :
 resList.map((restraunt)=> <Restraunt key={id}/>) //Iterating over the array 
 while using map always make sure to pass the unique key. Otherwise everything will be re rendered
 React itself says that never use index as keys
+"React reuses component instances based on the key."
 
 You can name a file as Header.js or Header.jsx same thing
 for export - export default componentName
@@ -113,6 +114,32 @@ Virtual DOM is the object representation of HTML
 //Array destructuring
 const ans = useState(resList);
 const [res, setRes] = ans 
+
+Monolith Architecture -> Where all service like API, UI, DB etc are there in single project
+Microservices Architecture -> Where all services are separate.Like separation of concerns
+Single Responsibility Principle is followed in Microservices architecture.
+In microservice architecture every service can be written in any language/framework
+All the services can be deployed on different domains and ports 
+When we call API to show data in our web page there are two approaches : 
+1. Page Loads -> api call(some 500 ms) -> and then only page will render 
+2. Page loads -> Render(whatever minimum you can) -> make API call -> Re render the page with updated content.
+Second approach is better approach as it helps in better UX.
+React has one of the best Rendering algos.It re renders very fast
+
+useEffect hook => so Basically once your that particular component will be rendered the the callback function of useEffect will be called.
+So if you want anything do be done once render is done, do make useEffect use.
+
+useEffect(()=>{}, [])
+Two argument it takes callback function and a dependency array 
+
+//fetch is functon not given by javascript it is given by JS engine in browsers
+const fetchData = async()=>{
+    const data = await fetch("url") //fetch returns a promise that's why using async await 
+    const json  = await data.json()
+    setRestraunt(data.cards[2])
+}
+
+CORS Policy : 
 
 
 
