@@ -139,6 +139,17 @@ const fetchData = async()=>{
     setRestraunt(data.cards[2])
 }
 
+useEffect(()=>{fetchData();},[])
+Shimmer UI -> fake page
+Conditional Rendering
+return list.length == 0 ? <Shimmer /> : ()
+whenever a value in state variable change react re render that whole component immediately
+const [btnName, setBtnName] = useState("Login")
+Able to chnage value of this const variable btnName through setBtName because whole component is re rendered and this const variable becomes a new variable hence allowing chnaging the value of constant variable
+And uses diff alogo to see change in previous component and then re rendered component
+Whenever state variable value chnages -> React triggers the reconciliation process -> Old component and this component compared with diff algo -> and only the part which is different is re rendered quickly
+filteredlist and originallist should be two separate local state variables
+
 CORS Policy : 
 
 
