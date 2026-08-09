@@ -129,6 +129,10 @@ React has one of the best Rendering algos.It re renders very fast
 useEffect hook => so Basically once your that particular component will be rendered the the callback function of useEffect will be called.
 So if you want anything do be done once render is done, do make useEffect use.
 
+Always use useState hook inside your functional component not outside
+Creating state variables at top is a goood practice in functional component
+Never use useState variables inside a if-Else, for loop, functions
+
 useEffect(()=>{}, [])
 Two argument it takes callback function and a dependency array 
 
@@ -150,9 +154,144 @@ And uses diff alogo to see change in previous component and then re rendered com
 Whenever state variable value chnages -> React triggers the reconciliation process -> Old component and this component compared with diff algo -> and only the part which is different is re rendered quickly
 filteredlist and originallist should be two separate local state variables
 
-CORS Policy : 
+Dependency Array of use effect: 
+
+-When not passed useEffect(()=>{}) -> useEffect will run on every render of the component
+-Empty passed useEffect(()=>{}, []) -> will run on only one very first rendering of component happened 
+-varaiblePasses useEffect(()=>{}, [count]).Now here are two cases :
+suppose count is a state variable so as soon as count chnages re-render happens useEffect compares the value of count variable before and after re-render and if different useEffect will run
+second case is useEffect is a normal variable so if you chnage it's value and somehow you do the re-rendering of your component then as above it will check diff and will run but if you chnage variable value and didn't done re-rendering then no useEffect will run
+useEffect watches renders not your variable!!
 
 
+CORS Policy : corsproxy.io
+So different origins means : 
+different protocol
+different domains
+different ports
+
+Now this is a enforcemnet a browser forces and stops browser javascript from reading the response received from an API or call to another origin 
+So baiscaly suppose I am loggin on sbi.com. My browser will be having the session cookie of sbi
+Now in other tab I opened evil.com
+Now evil.com's js will try to make a get request to bank api to fetch my passsowrd and since browser have my cookie it'll automatically attach that to the request
+Now Bank API will retrun response to evil.com but Bank API in headers will never say that evil.com is a trusted source to read data from means
+So Browser will stop evil.com from reading or accessing this response.
+
+Routing in React
+------------------
+
+react-router-dom -> famous librrary
+npm -i react-router-dom
+For routing we have to create Routing configuration
+So go to the file which is parent 
+import { createBrowserRouter } from "react-router-dom"
+Router Configuartion is a list of path objects 
+const appRouter = createBrowserRouter([
+    {
+        path:"/",
+        element: <App />,
+        //If React Router gets an error while handling this route, show <Error /> instead.
+        errorElement: <Error /> 
+    },
+    {
+        path:"/about",
+        element: <About />
+    }
+])
+
+Now this library has a component routerProvider which provides this routing configuration to our app
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<AppLayout />) now instead of this
+root.render(<ReactProvider route={appRouter} />)
+
+📌 rafce and hit enter to have functional component template in vs code 
+
+Fir handling errors, react-router-dom provides hook useRouteError to give more info on errors in routing
+import {useRouteError} from "react-router-dom"
+const error = useRouteError()
+<h1>{error.status}</h1> 
+
+Children Routes
+----------------
+Basically when we chnage routes we want header and footer to be intact body component should only chnage as per route requested 
+import {Outlet} from "react-router-dom"
+const App = ()=>{
+    return (
+        <Header/>
+        <Outlet /> //This is a componnet react-router-dom provides for rendering children route components
+        <Footer />
+    )
+}
+
+const appRouter = createBrowserRouter([
+    {
+        path:"/",
+        element: <App />,
+        children : [
+            {
+                path:"/",
+                element: <Body />
+            },
+            {
+                path:"/about",
+                element: <About />
+            },
+            {
+                path:"/contact",
+                element: <Contact />
+            },
+
+        ]
+        //If React Router gets an error while handling this route, show <Error /> instead.
+        errorElement: <Error /> 
+    },
+   
+])
+
+Single Page Application
+------------------------
+ever use anchor tag for going to a new page while using react as it refreshes the whole page
+<li><a href="/about">About</a></li>
+For this purpose react-roter-dom provides Link component
+import {Link} from "react-router-dom"
+<li><Link to="/about">About</Link></li> //It will not reload the page
+
+There are two types of Routing in a web application : 
+
+-Client Side Routing => So here all the components are fetched the page loaded initially and when you naviagte to /about or /contact no network call is made still you see the updated component.
+So In Single Page Applications Client side routing is used 
+-Server Side Routing => Network callmade and that .html page fetched and refreshed on the screen 
+
+Dynamic Routing 
+-----------------
+
+ children : [
+            {
+                path:"/",
+                element: <Body />
+            },
+            {
+                path:"/about",
+                element: <About />
+            },
+            {
+                path:"/contact",
+                element: <Contact />
+            },
+            {
+                path:"/restraunts/:id", so id will be variable here 
+                element: <RestrauntMenu />
+            },
+
+        ]
+Now react-router-dom have another hook
+import { useParams } from "react-router-dom"    
+const {resId} = useParams()
+Link tag is a wrapper over anchor tag
+
+check linkedin post of mine on link v/s anchor tag
 
 
 
