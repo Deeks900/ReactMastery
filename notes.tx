@@ -293,6 +293,30 @@ Link tag is a wrapper over anchor tag
 
 check linkedin post of mine on link v/s anchor tag
 
+--CLASS BASED COMPONENTS--
+
+import React from "react";
+class className extends React.Component {
+    //Now class based component receives props in constructor
+    costructor(props){
+        //In JavaScript, before you can use this inside a child-class constructor, you must call the parent class constructor using super().
+        super(props);
+    }
+
+    //This render function a classs have which basically returns the JSX to be coverted to HTML and rendered
+    render(){
+        return (
+            <div>Name : {this.props.name}</div>
+        )
+    }
+};
+export default className
+
+React.Component is a class provided by React and we are inheriting it 
+
+Passing props
+<User name={"deeksha"} />
+
 
 
 
