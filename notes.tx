@@ -317,6 +317,114 @@ React.Component is a class provided by React and we are inheriting it
 Passing props
 <User name={"deeksha"} />
 
+In ckass bases components era we were not having hooks so 
+class className extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            count = 0,
+            count2 = 1,
+        }
+    }
+
+    render(){
+        return (
+            <h1>{this.state.count}</h1>
+        )
+    }
+}
+
+for chnaging the value here use 
+this.setState({
+    count : this.state.count +1
+})
+
+Also we can write 
+import {Component} from "react"
+clsass className extends Component
+
+React class have a method :
+componentDidMount(){ -> This is called when constructor run then render run then this for a class
+
+}
+
+Now remember the order also 
+First Parent constructor called
+Parent render will be called 
+Child constructor will be called
+Child render will be called 
+Child didMount will be called
+Parent DidMount will be called 
+
+componentDidMout is used to make API call
+
+React Lifecycel:
+----------------
+Has two phases : 
+Render Phase : constructor run + render run
+Commit Phase : componentDidMount callesd and actual DOM updated
+If two children are there it optiimses by running Render phase for all childs first and then running Commit phase for both
+
+ParentConstructro called
+Parent render called
+
+Child1 constructor
+Child1 render
+
+Child2 constructor
+Child2 render
+
+//DOM Updation in Single btach (Difference between Virtual dom and reconcilitation)
+Child1 DidMount
+Child2 DidMount
+
+Parent didMount
+
+for making an API call
+async componentDidMount(){
+    data = await fetch("url");
+    const jsondata = await data.json()
+}
+
+componentDidUpdate
+
+Now whole cycle: 
+-----------------
+Mounting cycle
+--------------
+parent constructor
+parent render
+child constructor 
+child render
+
+child didMount
+this.setstate(API data) 
+parent did Mounting
+Mounting cycle finsihed
+
+//Update cycle 
+since state chnaged with new data
+render will be called
+componentDidUpdate will be called
+
+in constructor may be 
+this.times = setInterval({}=>{}, 1000)
+
+Now ComponentWillUnmount(){
+    clearInterval(this.timer) //this is shared across all ocmonents
+} for cleanup like setInterval
+When that compinent deaches like you move to new page
+
+Unmounting in React useEffect
+-----------------------------
+
+useEffect(()=>{
+   timer =  setInterval(()=>{}, 1000)
+    //This return function will be called when the component will be unmounted
+    return ()=>{
+        clearInterval(timer)
+    }
+}, [])
 
 
 
