@@ -426,6 +426,54 @@ useEffect(()=>{
     }
 }, [])
 
+Custom Hooks
+-------------
+Try to segregate the logics using Single Responsibility Principle
+Custom hooks are just helper functions.
+Like RestrauntMenu card should be concerbed only about displaying information but not making an API call
+So we can create a custom hook for making that API call
+React understands that it is a hook if you start function name with use 
+Like useRestrauntMenu and make a separate file with name matching in utilities folder
+and then you can make of useState and useEffect inside this custom hook to fetch the data
+Then use it like const resInfo = useRestrauntMenu(resId)
+If prefix use is not used in maing of custom hooks React will know them as simple functions not like hooks
+Hooks can't be rendered conditionally
+const useRestrauntMenu = (resId)=>{
+    const [resInfo, setResInfo] = useState(null);
+    useEffect(()=>{
+        fetchData();
+    }, [])
+
+    const fetchData = ()=>{
+        const data = await fetch();
+        const json = await data.json();
+        setResInfo(json)
+    }
+    return resInfo;
+}
+
+online eventListenter -> to check whether user online or offline.Browser gives us this superpowers.
+useOnlineStatus custom hook can be cretaed 
+
+Parcel is a bindler and it bundles your app and one .js file gets created having all the ocmponents of many files which you were having
+Drwaback is that this single js file will become very lasrge and hence slow down the page load
+Chunking/Code splitting comes to help here -> creating small small bundles of your .js files.Same name dynamic bundling, lazy loading or on demand loading
+While creating bundles we will do logical bundling, I mean enough code it should have to render a component of an application
+So suppose Instamart has food and grocery store so unitl and unless I go to grocery store that code related to grocery should not be loaded.
+lazy is a function given to us from React 
+import {lazy} from react
+//Now we want to load grocery using lazy loading so instead of normal imports we will be doing
+Grocery = lazy(()=>{
+    import('./components/Grocery') //import is not normal import keywrod it's a function 
+}) 
+
+//Now with this our main bundle will not be having the grocery code and there will be a separate bundle for Grocery component
+But you will encouter an error here because ther eis a millisecoind gap between this grocery code loads and react os fast so it sees code is not there and suspends the rendering process
+So there ia a component Suspense in react for this
+import { Suspense } from React
+path : "/grocery",
+element : <Suspense fallback={<Shimmer />}><Grocery/></Suspense>
+
 
 
 
