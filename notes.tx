@@ -474,9 +474,84 @@ import { Suspense } from React
 path : "/grocery",
 element : <Suspense fallback={<Shimmer />}><Grocery/></Suspense>
 
+saas and scss not good for scaling Applications
+styled components is the way that is good, AntUI, Chakra UI, Bootstrap
+tailwind css using post css behind the scenes - A tool for transforming css written with Js .className it use md removes duplication of css
+
+HIGHER ORDER COMPONENT : Takes a componet, do some changes in that component and return that componennt
+ex : 
+export const withPromotedLable = (RestrauntCard)=>{
+    //see retuning a new component
+    return ()=>{
+        return (
+            <div>
+                //Promoted label it added but to exisiting omcponent it will not do any chnage use it as is 
+                <label>Promoted</label>
+                <RestrauntCard />
+            </div>
+        );
+    }
+}
+["@type"] - To write variables with @ or not a valid identifier 
+React Dev Tools - Chrome Extension
+Profiler - Tells Time also 
+Component
+
+STATE LIFT UP : 
+----------------
+CONTROLLED COMPONENT : Like the component not managing it's state but the parent component deciding it's state.Example was parent deciding when to collapse or view the accordion
+UNCONTROLLED COMPONENT : Like the component is deciding it's own state and not taking that particualr state prop from the parent 
+
+Now for understanding the use case of state lifting up : Accordion is the best Example
+So I want that when I open one accordion then all other accordions should be closed
+So from the children I want to control the state variable defined in the parent.
+//whichever index is set that card will be opened 
+[showIndex, setShowIndex] = useState(0);
+{categories.map((category, index)=>{
+    <RestrauntCategory showItems= {index == showIndex ? true : false} setShowIndex={()=>{setShowIndex(index)}}/>
+})} 
+
+class RestrauntCard = ({setShowIndex}){
+    const handleClick = ()=>{
+        setShowIndex()
+    }
+}
+
+Props drilling -> Passing props from one componenet till leaf -Bad ->React Context solves this problem.
+Context is a place where you can keep your data and every component can access it.We generally create it inside utils.
+UserContext.js
+
+import {createContext} from "react"
+const UserContext = createContext({
+    loggedInUser : "DefaultUser"
+})
+
+Now in any component you need this info you can use below hook 
+import {useContext} from "react"
+const data = useContext(UserContext)
+
+To set the value of this context wrap 
+return (
+<UserContext.Provider value={{loggedInUser: userName}}>
+<div></div>
+</UserContext.Provider>
+)
+
+We can have nested UserContextProviders -> latest one will override
+
+Now the cool thing is that in this you can also pass function chnaging it's value like
+const [userName, setUserName] = useState("default");
+return (
+<UserContext.Provider value={{loggedInUser: userName}}, setUserName>
+<div></div>
+</UserContext.Provider>
+)
+
+Now in Body component can do 
+const {loggedInUser, setUserName} = useContext();
 
 
-
-
-
+In class based components
+<UserContext.Consumer>{(data)=>console.log(data)}
+</UserContext.Consumer>
 
